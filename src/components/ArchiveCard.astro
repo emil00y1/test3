@@ -1,0 +1,88 @@
+---
+const { text, artclass, textclass, title, desc, img } = Astro.props;
+---
+
+<article class={artclass}>
+  <div class="cardheader">
+    <div class="flex">
+      <img class="can" src={`/img/products/${img}.webp`} alt="Beer Can" />
+      <div>
+        <h3 class={textclass}>{title}</h3>
+        <p class={textclass}>{desc}</p>
+      </div>
+    </div>
+    <div class="barbox">
+      <span class={`bar bar1 ${textclass}`}></span>
+      <span class={`bar bar2 ${textclass}`}></span>
+    </div>
+  </div>
+  <div class="cardcontent">
+    <img src={`/img/archive/${img}.webp`} alt="Label" />
+    <h2 class="archive">{title}</h2>
+  </div>
+</article>
+
+<style>
+  article {
+    padding: 14px;
+  }
+  .cardheader {
+    display: flex;
+    padding: 18px 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cardcontent {
+    padding-top: 20px;
+  }
+  .flex {
+    display: flex;
+    gap: 22px;
+  }
+
+  img.can {
+    max-width: 40px;
+  }
+
+  h2.archive {
+    text-align: center;
+  }
+
+  h3 {
+    padding: 14px 0 12px 0;
+  }
+
+  .barbox {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .bar {
+    display: block;
+    background-color: black;
+    height: 4px;
+    width: 26px;
+    border-radius: 10px;
+    position: absolute;
+  }
+  .bar1 {
+    transform: translate(-2px, 13px) rotate(45deg);
+  }
+  .bar2 {
+    transform: translate(14px, 13px) rotate(-45deg);
+  }
+
+  p.limone,
+  h3.limone {
+    color: #000000;
+  }
+
+  .limonebg {
+    background-color: #f3efd7;
+  }
+
+  .bar.limone {
+    background-color: #000000;
+  }
+</style>

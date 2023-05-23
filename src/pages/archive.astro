@@ -1,0 +1,17 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import ArchiveCard from "../components/ArchiveCard.astro";
+---
+
+<MainLayout title="BEERS BY KIDDUSH">
+  <Header slot="header" archive="active" />
+  <p>Below you can find all the beers ever brewed and designed by Kiddush. We are proud of our graphic design and taste, so why not show it?</p>
+  <ArchiveCard artclass="limonebg" textclass="limone" title="Limone" desc="NEIPA" img="limone" />
+</MainLayout>
+<style>
+  p {
+    margin: 14px;
+    text-align: center;
+  }
+</style>

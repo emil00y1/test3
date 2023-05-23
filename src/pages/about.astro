@@ -1,0 +1,126 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+---
+
+<MainLayout title="FACES OF KIDDUSH">
+  <Header slot="header" about="active" />
+  <section>
+    <p>
+      Kiddush started as a wineclub in 2021 and has, since then developed into a
+      beer breweri. We are producing the beer ourselves in our little breweri in
+      the Northern region of Zealand.
+    </p>
+    <p>
+      Our passion for brewing beer stems from our desire to bring people
+      together and create a sense of community. We believe that there's
+      something special about sharing a pint of delicious, locally-brewed beer
+      with friends and loved ones, and that's what drives us to keep
+      experimenting and perfecting our craft.
+    </p>
+  </section>
+  <section class="bg_alternate">
+    <h2>JACOB</h2>
+    <img src="/img/portraitjacob.webp" alt="potrait of co-owner, Jacob" />
+    <p>
+      Jacob is 24 years old and started Kiddush in 2021 . It all began when
+      Jacob got tired of everything being so fancy while working as a cellare.
+      Gathering people around good beer for a reasonable price became a misson.
+    </p>
+    <p>
+      Jacob has a good sense for graphic design and does’nt put anything in
+      production that he can’t stand by. A thouroughly developed product from
+      beginning to end is the most important thing for Jakob as co-owner of
+      Kiddush.
+    </p>
+  </section>
+  <section>
+    <h2>LUCAS</h2>
+    <img src="/img/portraitlucas.webp" alt="portrait of co-owner, Lucas" />
+    <p>
+      Lucas is 25 years old and grew up in Østerbro, Copenhagen. Good food and a
+      healthy thirst has always been a part of Lucas’ persona. With a passion
+      for brewing and a knack for experimentation, he brings a unique and
+      creative perspective to the brewery's operations.
+    </p>
+    <p>
+      His dedication to quality ensures that every sip of Kiddush beer is a
+      delight for the taste buds, and his enthusiasm for community-building
+      makes him a natural fit for the company's mission.
+    </p>
+  </section>
+  <section class="bg_alternate">
+    <h3>Behind the Scenes at Kiddush</h3>
+    <p>
+      Join us as we take you through the brewing process, introduce you to our
+      team, and share our passion for creating delicious, community-driven beer.
+      You'll get an inside look at where we meticulously craft each batch of
+      beer to perfection and get to see our co-founders, who share their story
+      and vision for Kiddush
+    </p>
+    <video poster="/img/maxresdefault.jpg"></video>
+  </section>
+</MainLayout>
+
+<style>
+  img,
+  video {
+    max-width: 100vw;
+  }
+
+
+  img {
+    border-radius: 50%;
+    margin-top: 34px;
+    margin-bottom: 34px;
+  }
+
+  video {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  section * {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+
+  }
+
+  .bg_alternate {
+    background-color: var(--background2);
+    padding-top: 46px;
+  }
+
+  h2 {
+      text-align: center;
+  text-transform: uppercase;
+  color: var(--kiddushblack);
+  }
+ 
+
+  @media (min-width: 800px) {
+    /* img {
+      max-width: 473px;
+    }
+    section * {
+      max-width: 1170px;
+    }
+  } */
+
+  @media (min-width: 1200px) {
+    /* section * {
+      max-width: 1400px;
+    } */
+  }
+</style>

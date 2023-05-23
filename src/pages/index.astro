@@ -1,0 +1,239 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import Banner from "../components/Banner.astro";
+import Button from "../components/Button.astro";
+import ProductCard2 from "../components/ProductCard2.astro";
+
+const data = await fetch(
+  "https://syezauaectamogglkmvc.supabase.co/rest/v1/products?order=id.asc&category=eq.Beers%20and%20Drinks",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5ZXphdWFlY3RhbW9nZ2xrbXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ0OTcyODUsImV4cCI6MjAwMDA3MzI4NX0.5CbbGAvqETjhd1_tbVm-oa-4F_JHliJV0Xuy_dG2rms",
+    },
+  }
+).then((res) => res.json());
+
+const comingSoonData = data.filter((item) => item.comingsoon === true);
+const notComingSoonData = data.filter((item) => item.comingsoon === false);
+---
+
+<MainLayout title="KIDDUSH" id="landing">
+  <Header slot="header" home="active" />
+  <Button text="BUY BEER" href="/shop" type="index extra_margin" />
+  <div class="slider">
+    <div class="control previous">
+      <svg
+        class="chevron"
+        xmlns="http://www.w3.org/2000/svg"
+        width="36"
+        height="36"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-chevron-left"
+        ><polyline points="15 18 9 12 15 6"></polyline></svg
+      >
+    </div>
+    <div class="cards">
+      {
+        notComingSoonData.map((product) => {
+          return <ProductCard2 data={product} />;
+        })
+      }
+    </div>
+    <div class="control next">
+      <svg
+        class="chevron"
+        xmlns="http://www.w3.org/2000/svg"
+        width="36"
+        height="36"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><polyline points="9 18 15 12 9 6"></polyline></svg
+      >
+    </div>
+  </div>
+  <Banner />
+  <h2>Coming Soon</h2>
+  <div class="slider">
+    <div class="control previous">
+      <svg
+        class="chevron"
+        xmlns="http://www.w3.org/2000/svg"
+        width="36"
+        height="36"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-chevron-left"
+        ><polyline points="15 18 9 12 15 6"></polyline></svg
+      >
+    </div>
+    <div class="cards">
+      {
+        comingSoonData.map((product) => {
+          return <ProductCard2 data={product} />;
+        })
+      }
+    </div>
+    <div class="control next">
+      <svg
+        class="chevron"
+        xmlns="http://www.w3.org/2000/svg"
+        width="36"
+        height="36"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><polyline points="9 18 15 12 9 6"></polyline></svg
+      >
+    </div>
+  </div>
+  <section class="events_index">
+    <img src="/img/emil_musik_i_lejet.webp" alt="musik i lejet emil" />
+    <h2>future events</h2>
+    <p>
+      Join us this summer at MUSIK I LEJET, where you can immerse yourself in
+      incredible music and unforgettable moments. Make sure to stop by the
+      Kiddush Beer booth and grab a refreshing pint to complement the fantastic
+      tunes.
+    </p>
+    <br /><br />
+    <p>
+      Get ready for an experience that harmonizes the best of music, community,
+      and ice-cold Kiddush beer.
+    </p>
+
+    <Button text="SEE EVENTS" href="/events" type="index extra_margin" />
+  </section>
+</MainLayout>
+
+<style>
+  .slider {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .cards {
+    overflow: hidden;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    flex-wrap: nowrap; /* Added */
+    max-width: 190px;
+  }
+
+  .control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .previous {
+    left: 10px;
+  }
+
+  .chevron {
+    color: var(--kiddushblack);
+  }
+  .next {
+    right: 10px;
+  }
+  img {
+    width: 100vw;
+  }
+
+  h2 {
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--kiddushblack);
+  }
+  p {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  .cards::-webkit-scrollbar {
+    width: 0; /* Remove default scrollbar */
+    height: 0;
+  }
+</style>
+
+<script>
+  const sliders = document.querySelectorAll(".slider");
+
+  sliders.forEach((slider) => {
+    const cardsContainer = slider.querySelector(".cards");
+    const previousBtn = slider.querySelector(".previous");
+    const nextBtn = slider.querySelector(".next");
+    const cardWidth =
+      cardsContainer.offsetWidth +
+      parseFloat(
+        getComputedStyle(cardsContainer.firstElementChild).marginRight
+      );
+
+    previousBtn.addEventListener("click", () => {
+      const scrollAmount =
+        Math.floor(cardsContainer.scrollLeft / cardWidth - 1) * cardWidth;
+      cardsContainer.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const maxScrollLeft =
+        cardsContainer.scrollWidth - cardsContainer.offsetWidth;
+      const currentScrollLeft = cardsContainer.scrollLeft;
+      const scrollAmount = currentScrollLeft + cardWidth;
+
+      if (scrollAmount > maxScrollLeft) {
+        cardsContainer.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        });
+      } else {
+        cardsContainer.scrollTo({
+          left: scrollAmount,
+          behavior: "smooth",
+        });
+
+        // Wait for the scroll animation to finish, then snap to the next product
+        setTimeout(() => {
+          const nextProductIndex = Math.ceil(scrollAmount / cardWidth);
+          const nextScrollLeft = nextProductIndex * cardWidth;
+          cardsContainer.scrollTo({
+            left: nextScrollLeft,
+            behavior: "smooth",
+          });
+        }, 1); // Adjust the delay if needed
+      }
+    });
+  });
+</script>

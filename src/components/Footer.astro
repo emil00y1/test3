@@ -1,0 +1,115 @@
+<footer id="footer">
+  <div>
+    <section class="links">
+      <h4>LINKS</h4>
+      <p><a target="_blank" href="https://www.instagram.com/kiddushbrewing/">INSTAGRAM</a></p>
+      <p><a target="_blank" href="https://www.youtube.com/">YOUTUBE</a></p>
+      <p><a target="_blank" href="https://rentle.store/kiddush/shop">RENT A TAP</a></p>
+    </section>
+    <section class="kiddush">
+      <h4>ABOUT KIDDUSH</h4>
+      <p>
+        Kiddush is a young danish brewery. Good beer takes time – enjoy with
+        dedication and care, in good company or all by yourself.
+      </p>
+    </section>
+    <section class="shop">
+      <h4>ABOUT SHOP</h4>
+      <p>
+        <a href="https://kiddush.dk/index.php/cookie-policy/">COOKIE POLICY</a>
+      </p>
+      <p>
+        <a href="https://kiddush.dk/index.php/privacy-policy/">PRIVACY POLICY</a
+        >
+      </p>
+      <p><a href="https://www.findsmiley.dk/1114871">SMILEYRAPPORT</a></p>
+    </section>
+    <section class="contact">
+      <h4>CONTACT</h4>
+      <p><a href="mailto:brygger@kiddush.com">brygger@kiddush.com</a></p>
+      <p><a href="tel:+4528158355">+45 28 15 83 55</a></p>
+      <p>CVR: 41883723</p>
+    </section>
+    <section class="newsletter">
+      <h4>JOIN OUR NEWSLETTER</h4>
+      <input placeholder="E-mail" />
+      <button>Confirm</button>
+    </section>
+  </div>
+</footer>
+
+<style>
+  footer p {
+    font-size: 16px;
+  }
+  footer {
+    background-color: var(--kiddushblack);
+    padding: 14px;
+    padding-bottom: 35px;
+  }
+  div {
+    max-width: 1170px;
+    margin: auto;
+  }
+
+  .kiddush {
+    max-width: 330px;
+  }
+
+  footer p,
+  footer a,
+  footer h4 {
+    color: var(--background);
+  }
+
+  h4 {
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    border: 2px solid var(--background);
+    border-radius: 12px;
+    padding: 0.8rem;
+    background-color: var(--kiddushblack);
+    color: var(--background);
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 7px;
+  }
+
+  button {
+    padding: 0.8rem;
+    background-color: var(--background);
+    color: var(--kiddushblack);
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    margin-top: 17px;
+  }
+
+  @media (min-width: 515px) {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+  }
+
+  @media (min-width: 800px) {
+    div {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+  }
+</style>

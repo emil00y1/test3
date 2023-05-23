@@ -1,0 +1,228 @@
+---
+const { shop, archive, events, about, home } = Astro.props;
+---
+
+<header>
+  <a href="/" class="logo"><img src="img/logo.svg" alt="logo" /></a>
+  <div class="navright">
+    <div class="bargemenu">
+      <div class="bar"></div>
+    </div>
+    <nav>
+      <ul class="navmenu">
+        <li class="homenav"><a class={home} href="/">KIDDUSH</a></li>
+        <li><a class={shop} href="/shop">SHOP</a></li>
+        <li><a class={archive} href="/archive">BEER ARCHIVE</a></li>
+        <li><a class={events} href="/events">EVENTS</a></li>
+        <li><a class={about} href="/about">ABOUT US</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="#" class="search"
+        ><svg
+          width="31"
+          height="31"
+          viewBox="0 0 31 31"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M30.13 28.37L20.88 19.12C22.51 17.1 23.49 14.54 23.49 11.75C23.5 5.27 18.23 0 11.75 0C5.27 0 0 5.27 0 11.75C0 18.23 5.27 23.5 11.75 23.5C14.54 23.5 17.1 22.52 19.12 20.89L28.37 30.14C28.61 30.38 28.93 30.51 29.25 30.51C29.57 30.51 29.89 30.39 30.13 30.14C30.62 29.65 30.62 28.86 30.13 28.37ZM2.5 11.75C2.5 6.65 6.65 2.5 11.75 2.5C16.85 2.5 21 6.65 21 11.75C21 16.85 16.85 21 11.75 21C6.65 21 2.5 16.85 2.5 11.75Z"
+          ></path>
+        </svg></a
+      >
+      <a href="#" class="cart"
+        ><svg
+          width="32"
+          height="27"
+          viewBox="0 0 32 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M31.35 9.24985C31.27 9.10985 31.17 8.96985 31.04 8.86985L20.54 0.329848C20 -0.110152 19.22 -0.0201521 18.78 0.509848C18.59 0.739848 18.5 1.01985 18.5 1.29985C18.5 1.65985 18.66 2.01985 18.96 2.26985L26.73 8.58985H5.76002L13.53 2.26985C14.07 1.82985 14.15 1.04985 13.71 0.509848C13.27 -0.0301521 12.49 -0.110152 11.95 0.329848L1.45002 8.86985C1.31002 8.97985 1.21002 9.11985 1.13002 9.26985C0.830017 9.65985 0.70002 10.1498 0.79002 10.6398L3.34002 25.0198C3.49002 25.8598 4.21002 26.4598 5.06002 26.4598H27.42C28.27 26.4598 29 25.8498 29.14 25.0198L31.69 10.6398C31.78 10.1398 31.65 9.63985 31.33 9.24985H31.35ZM26.8 23.9598H5.70002L3.41002 11.0798H29.08L26.79 23.9598H26.8Z"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .homenav {
+    display: none;
+  }
+
+  header {
+    z-index: 1;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    margin: auto 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--kiddushblack);
+    font-family: Montserrat, sans-serif;
+
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: var(--primary);
+    transition: 0.2s ease-in-out;
+  }
+
+  svg {
+    fill: var(--kiddushblack);
+    width: 25px;
+  }
+  svg:hover {
+    fill: var(--primary);
+    transition: 0.2s ease-in-out;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .cart,
+  .search {
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .navright {
+    display: flex;
+    gap: 50px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background-color: var(--background);
+    position: fixed;
+    width: 100%;
+  }
+  nav {
+    display: flex;
+    gap: 50px;
+    text-align: center;
+    margin: auto 0;
+  }
+  .active {
+    color: var(--primary);
+  }
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  /**************************************************************************************************************/
+  @media (max-width: 900px) {
+    .active {
+      color: var(--secondary);
+    }
+    .bargemenu {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      position: relative;
+      margin: auto 0;
+      z-index: 1;
+    }
+
+    .bargemenu .bar {
+      width: 100%;
+      height: 3px;
+      background-color: var(--kiddushblack);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transition: transform 0.3s linear;
+      border-radius: 10px;
+    }
+
+    .bargemenu .bar::before,
+    .bargemenu .bar::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--kiddushblack);
+      transition: transform 0.3s linear;
+      border-radius: 10px;
+    }
+
+    .bargemenu .bar::before {
+      transform: translateY(-12px);
+    }
+
+    .bargemenu .bar::after {
+      transform: translateY(12px);
+    }
+
+    .bargemenu.active .bar {
+      transform: rotate(360deg);
+      background-color: var(--background);
+    }
+
+    .bargemenu.active .bar::before {
+      transform: translate(-8.6px, 5px) rotate(45deg) scale(0.5, 1);
+      background-color: var(--background);
+    }
+
+    .bargemenu.active .bar::after {
+      transform: translate(-8.6px, -5px) rotate(-45deg) scale(0.5, 1);
+      background-color: var(--background);
+    }
+
+    .homenav {
+      display: block;
+    }
+
+    .navmenu {
+      flex-direction: column;
+      color: var(--background);
+      margin: auto;
+    }
+    nav {
+      position: fixed;
+      background-color: var(--primary);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+    a {
+      color: var(--background);
+
+      font-size: 40px;
+      font-weight: 700;
+    }
+    a:hover {
+      color: var(--secondary);
+    }
+    nav.active {
+      display: flex;
+    }
+  }
+  /**************************************************************************************************************/
+</style>
+<script>
+  const bargemenu = document.querySelector(".bargemenu");
+  const nav = document.querySelector("nav");
+
+  bargemenu.addEventListener("click", function () {
+    this.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+</script>

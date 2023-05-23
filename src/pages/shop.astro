@@ -1,0 +1,77 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import ProductCard from "../components/ProductCard.astro";
+import Banner from "../components/Banner.astro";
+import Button from "../components/Button.astro";
+
+const data = await fetch("https://syezauaectamogglkmvc.supabase.co/rest/v1/products?order=id.asc", {
+  method: "GET",
+  headers: {
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5ZXphdWFlY3RhbW9nZ2xrbXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ0OTcyODUsImV4cCI6MjAwMDA3MzI4NX0.5CbbGAvqETjhd1_tbVm-oa-4F_JHliJV0Xuy_dG2rms",
+  },
+}).then((res) => res.json());
+---
+
+<MainLayout title="SHOP">
+  <Header slot="header" shop="active" />
+  <div class="buttonNavigation">
+    <Button text="Beers and Drinks" type="filter" />
+    <Button text="Merch" type="filter" />
+    <Button text="View all" type="filter" />
+  </div>
+  <section>
+    {
+      data.map((product) => {
+        return <ProductCard data={product} />;
+      })
+    }
+  </section>
+  <Banner />
+</MainLayout>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 14px;
+    gap: 14px;
+  }
+  div {
+    display: flex;
+  }
+
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--kiddushblack);
+  }
+</style>
+
+<script>
+  window.addEventListener("load", addActive);
+
+  function addActive() {
+    console.log("hello bish");
+    document.querySelector(".buttonNavigation").lastElementChild.classList.add("filter_active");
+  }
+
+  const all = document.querySelectorAll(".product_card");
+
+  const buttons = document.querySelectorAll(".buttonNavigation a");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      buttons.forEach((b) => b.classList.remove("filter_active"));
+      btn.classList.add("filter_active");
+      const category = btn.textContent;
+      all.forEach((card) => {
+        card.classList.add("hide");
+        if ([card.dataset.category, "View all"].includes(category)) {
+          console.log("category is WORK");
+          card.classList.remove("hide");
+        }
+      });
+    });
+  });
+</script>
